@@ -1,18 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    @keyframes slideUpFade {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .anim-slide-up {
+        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0; 
+    }
+    .anim-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+        opacity: 0;
+    }
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+</style>
+
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class="card shadow-lg border-0 rounded-4" style="max-width: 900px; width: 100%; overflow: hidden;">
+    <!-- 1. Tambahkan class 'anim-slide-up' pada Card utama -->
+    <div class="card shadow-lg border-0 rounded-4 anim-slide-up" style="max-width: 900px; width: 100%; overflow: hidden;">
         <div class="row g-0">
-            
+
             <!-- Sisi Kiri: Ilustrasi (Background Hijau Muda) -->
             <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center" style="background-color: #e8f5e9;">
-                <!-- Ganti src dengan path gambar ilustrasi kamu -->
-                <img src="{{ asset('images/login-illustration.png') }}" alt="Ilustrasi Toko" class="img-fluid p-4">
+                <!-- 2. Tambahkan class 'anim-fade-in delay-1' pada Gambar -->
+                <img src="{{ asset('images/login-illustration.png') }}" alt="Ilustrasi Toko" class="img-fluid p-4 anim-fade-in delay-1">
             </div>
 
             <!-- Sisi Kanan: Form Login -->
-            <div class="col-md-6 p-5 bg-white">
+            <div class="col-md-6 p-5 bg-white anim-slide-up delay-2">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="fw-bold mb-0" style="color: #2e7d32;">Login Tokoku</h3>
                 </div>
